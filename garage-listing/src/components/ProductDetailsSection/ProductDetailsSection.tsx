@@ -24,7 +24,9 @@ export const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({
   return (
     <div className="mx-auto mr-4">
       <div className="w-full">
-        {listingTitle && <p className="text-lg">{listingTitle}</p>}
+        {listingTitle && (
+          <p className="text-xl font-weight-800">{listingTitle}</p>
+        )}
       </div>
       <div className="w-full mt-4">
         {description && <p className="text-sm">{description}</p>}
@@ -71,7 +73,9 @@ export const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({
       </div>
       <button className="flex">
         <div className="mt-2 text-md text-gray-800">
-          <span>⚡ Get an instant quote on freight, warranty or insurance.</span>
+          <span>
+            ⚡ Get an instant quote on freight, warranty or insurance.
+          </span>
         </div>
       </button>
       <button className="flex">
@@ -82,9 +86,3 @@ export const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({
     </div>
   );
 };
-
-// \  const listingDescription = `Hi, I'm ${userInfo?.displayName}.
-// I'm selling a ${listing?.listingTitle}.
-// ${listing?.mileage} miles, ${listing?.hasRust ? "some rust" : "no rust"}, ${listing?.itemBrand} truck.
-// ${listing?.hasPumpTest ? "Pump tested, " : ""}${listing?.tankSize} Gallon Tank.
-// Warranty, freight, and financing available, provided by Garage.`;

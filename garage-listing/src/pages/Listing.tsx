@@ -38,7 +38,7 @@ export const Listing: React.FC = () => {
       )}
 
       {/* Product details and bidding section laid out similarly to the image split */}
-      <div className="flex mt-4 max-w-[1440px] mx-auto">
+      <div className="flex-col md:flex-row flex mt-4 px-2 max-w-[1440px] mx-auto">
         {/* Left: Product description */}
         <div className="w-full md:w-1/2">
           <ProductDetailsSection

@@ -14,7 +14,11 @@ export const ProductBiddingSection: React.FC<ProductBiddingSectionProps> = ({
     <div className="w-full flex flex-col">
       <span className="justify-between">Current Bid: </span>
       <span className="font-bold text-xl mt-2">${currentPrice}</span>
-      <span className="text-sm">w/ Buyer's Premium: ${buyerPremiumPrice * 1.1}</span>
+      {buyerPremiumPrice && (
+        <span className="text-sm">
+          w/ Buyer's Premium: ${buyerPremiumPrice * 1.1}
+        </span>
+      )}
       <div className="w-full flex flex-col">
         <div className="mt-2">
           <button
@@ -28,6 +32,12 @@ export const ProductBiddingSection: React.FC<ProductBiddingSectionProps> = ({
             className="bg-black text-white h-10 my-1 px-3 py-1 rounded-md w-full"
           >
             Add to Watchlist
+          </button>
+          <button
+            onClick={onQuickBid}
+            className="bg-black text-white h-10 my-1 px-3 py-1 rounded-md w-full"
+          >
+            Quote Shipping, Warranty, or Insurance
           </button>
         </div>
       </div>
