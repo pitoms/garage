@@ -47,6 +47,7 @@ export const Listing: React.FC = () => {
             mileage={listing?.mileage}
             brand={listing?.itemBrand}
             pumpTest={listing?.hasPumpTest}
+            tankSize={listing?.tankSize}
             location={listing?.addressState}
             sellerName={userInfo?.displayName}
           />
@@ -55,8 +56,8 @@ export const Listing: React.FC = () => {
         {/* Right: Bidding section */}
         <div className="w-full md:w-1/2">
           <ProductBiddingSection
-            currentPrice={""}
-            buyerPremiumPrice={""}
+            currentPrice={listing?.sellingPrice}
+            buyerPremiumPrice={listing?.sellingPrice}
             onQuickBid={() => {
               // Implement quick bid functionality here
             }}

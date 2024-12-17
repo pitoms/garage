@@ -5,7 +5,7 @@ interface ProductDetailsSectionProps {
   mileage?: number;
   rust?: boolean;
   pumpTest?: boolean;
-  tankSize?: string;
+  tankSize?: number;
   brand?: string;
   location?: string;
 }
@@ -40,13 +40,13 @@ export const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({
         {mileage && (
           <div className="mr-2">
             <span className="font-bold">Mileage: </span>
-            <span>{mileage} miles</span>
+            <span>{mileage} mi</span>
           </div>
         )}
         {tankSize && (
           <div className="mr-2">
             <span className="font-bold">Tank Size: </span>
-            <span>{tankSize}</span>
+            <span>{tankSize} Gal</span>
           </div>
         )}
         {rust && (
@@ -69,9 +69,14 @@ export const ProductDetailsSection: React.FC<ProductDetailsSectionProps> = ({
           </div>
         )}
       </div>
-      <button>
+      <button className="flex">
         <div className="mt-2 text-md text-gray-800">
-          <span> Get an instant quote on freight, warranty or insurance.</span>
+          <span>⚡ Get an instant quote on freight, warranty or insurance.</span>
+        </div>
+      </button>
+      <button className="flex">
+        <div className="mt-2 text-md text-gray-800">
+          <span>✉️ Message the seller, {sellerName}.</span>
         </div>
       </button>
     </div>
