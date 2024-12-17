@@ -23,19 +23,19 @@ export const ProductBiddingSection: React.FC<ProductBiddingSectionProps> = ({
         <div className="mt-2">
           <button
             onClick={onQuickBid}
-            className="bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full"
+            className="hover:bg-white hover:text-black bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full border-blk-100"
           >
             Place Bid
           </button>
           <button
             onClick={onQuickBid}
-            className="bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full"
+            className="hover:bg-white hover:text-black bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full"
           >
             Add to Watchlist
           </button>
           <button
             onClick={onQuickBid}
-            className="bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full"
+            className="hover:bg-white hover:text-black bg-black text-sm text-white h-10 my-1 px-3 py-1 rounded-md w-full"
           >
             Quote Shipping, Warranty, or Insurance
           </button>

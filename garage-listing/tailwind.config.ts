@@ -8,6 +8,15 @@ export default withMT({
       fontFamily: {
         sans: ["Domine", "serif"],
       },
+      keyframes: {
+        glow: {
+          "0%, 80%": { opacity: "1" }, // Fully visible
+          "50%": { opacity: "0" }, // Fully transparent
+        },
+      },
+      animation: {
+        glow: "glow 0.9s ease-in-out infinite",
+      },
     },
   },
   plugins: [],

@@ -10,53 +10,64 @@ import { ImageGallery } from "../components/ImageGallery/ImageGallery";
 import { ProductDetailsSection } from "../components/ProductDetailsSection/ProductDetailsSection";
 import { ProductBiddingSection } from "../components/ProductBiddingSection/ProductBiddingSection";
 import { ProductRelatedSection } from "../components/ProductRelatedSection/ProductRelatedSection";
+import loadingImage from "../assets/truck.webp"; // Example loading image
 
 export const Listing: React.FC = () => {
   const { listingId } = useParams();
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [listing, setListing] = useState<ResponseTypes.GetListingResponse>();
   const [userInfo, setUserInfo] = useState<ResponseTypes.GetUserResponse>();
   const [relatedListings, setRelatedListings] =
     useState<ResponseTypes.GetListingResponse[]>();
 
   useEffect(() => {
-    const fetchListing = async () => {
-      if (listingId) {
-        const data = await getListingData(listingId);
-        setListing(data.result.listing);
+    const fetchAllData = async () => {
+      setIsLoading(true);
+      try {
+        if (listingId) {
+          const [listingData, relatedData] = await Promise.all([
+            getListingData(listingId),
+            getRelatedListings(listingId),
+          ]);
+          setListing(listingData.result.listing);
+          setRelatedListings(relatedData.result.relatedListings);
+
+          if (listingData.result.listing?.userId) {
+            const userData = await getUser(listingData.result.listing.userId);
+            setUserInfo(userData);
+          }
+        }
+      } catch (error) {
+        console.error("Failed to fetch listing data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
-    fetchListing();
+
+    fetchAllData();
   }, [listingId]);
 
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      if (listing?.userId) {
-        const data = await getUser(listing.userId);
-        setUserInfo(data);
-      }
-    };
-    fetchUserInfo();
-  }, [listing?.userId]);
-
-  useEffect(() => {
-    const fetchRelatedListings = async () => {
-      if (listingId) {
-        const data = await getRelatedListings(listingId);
-        setRelatedListings(data.result.relatedListings);
-      }
-    };
-    fetchRelatedListings();
-  }, [listingId]);
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-screen">
+        <img
+          src={loadingImage}
+          alt="Loading..."
+          className="animate-glow w-100 h-100"
+        />
+      </div>
+    );
+  }
 
   return (
     <>
-      {listing && listing.imageUrls && listing.imageUrls.length > 0 && (
+      {/* Image Gallery */}
+      {listing?.imageUrls && listing.imageUrls.length > 0 && (
         <ImageGallery imageSources={listing.imageUrls} />
       )}
 
-      {/* Product details and bidding section laid out similarly to the image split */}
+      {/* Product details and bidding sections */}
       <div className="flex-col md:flex-row flex mt-4 px-2 max-w-[1440px] mx-auto">
-        {/* Left: Product description */}
         <div className="w-full md:w-1/2">
           <ProductDetailsSection
             listingTitle={listing?.listingTitle}
@@ -69,9 +80,7 @@ export const Listing: React.FC = () => {
             sellerName={userInfo?.displayName}
           />
         </div>
-
-        {/* Right: Bidding section */}
-        <div className="w-full md:w-1/2">
+        <div className="w-full mt-4 md:mt-0 md:w-1/2">
           <ProductBiddingSection
             currentPrice={listing?.sellingPrice}
             buyerPremiumPrice={listing?.sellingPrice}
@@ -81,10 +90,13 @@ export const Listing: React.FC = () => {
           />
         </div>
       </div>
+
+      {/* Related Listings */}
       <div className="flex-col mt-4 px-2 max-w-[1440px] mx-auto">
         <ProductRelatedSection relatedListings={relatedListings} />
       </div>
     </>
   );
 };
+
 export default Listing;
