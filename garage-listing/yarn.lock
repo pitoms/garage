@@ -361,6 +361,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@material-tailwind/html@npm:^2.3.2":
+  version: 2.3.2
+  resolution: "@material-tailwind/html@npm:2.3.2"
+  dependencies:
+    deepmerge: "npm:^4.2.2"
+    material-ripple-effects: "npm:^2.0.1"
+  checksum: 10c0/86bcdf2c9ba435a5be0cc8a72d06145da07557b39b40ef7353d3efaabfae98ad8b511415a53c146fb30c7c1881449c11b8cdbf2557350b4d67714e4028ad972a
+  languageName: node
+  linkType: hard
+
 "@nodelib/fs.scandir@npm:2.1.5":
   version: 2.1.5
   resolution: "@nodelib/fs.scandir@npm:2.1.5"
@@ -1255,6 +1265,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"deepmerge@npm:^4.2.2":
+  version: 4.3.1
+  resolution: "deepmerge@npm:4.3.1"
+  checksum: 10c0/e53481aaf1aa2c4082b5342be6b6d8ad9dfe387bc92ce197a66dea08bd4265904a087e75e464f14d1347cf2ac8afe1e4c16b266e0561cc5df29382d3c5f80044
+  languageName: node
+  linkType: hard
+
 "delayed-stream@npm:~1.0.0":
   version: 1.0.0
   resolution: "delayed-stream@npm:1.0.0"
@@ -1731,6 +1748,7 @@ __metadata:
   resolution: "garage-listing@workspace:."
   dependencies:
     "@eslint/js": "npm:^9.15.0"
+    "@material-tailwind/html": "npm:^2.3.2"
     "@types/react": "npm:^18.3.17"
     "@types/react-dom": "npm:^18.3.1"
     "@types/react-router-dom": "npm:^5.3.3"
@@ -2114,6 +2132,13 @@ __metadata:
     promise-retry: "npm:^2.0.1"
     ssri: "npm:^12.0.0"
   checksum: 10c0/c40efb5e5296e7feb8e37155bde8eb70bc57d731b1f7d90e35a092fde403d7697c56fb49334d92d330d6f1ca29a98142036d6480a12681133a0a1453164cb2f0
+  languageName: node
+  linkType: hard
+
+"material-ripple-effects@npm:^2.0.1":
+  version: 2.0.1
+  resolution: "material-ripple-effects@npm:2.0.1"
+  checksum: 10c0/d5eccb708ca6c7460f0402fc308cd9c86e442d3abc20394fb2313be47347a7cc67131d1db1b829d835887d897f54892fcb5bad2f5526878164d6f6803e06d05b
   languageName: node
   linkType: hard
 

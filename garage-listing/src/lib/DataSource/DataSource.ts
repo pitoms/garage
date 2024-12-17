@@ -8,6 +8,12 @@ listingId: string,
     const response = await axios.post<{error: string, result: {listing: ResponseTypes.GetListingResponse}}>('https://garage-backend.onrender.com/getListing',{
         id: listingId,
     })
-
     return response.data;
 }
+
+export const getUser = async (
+    userId: string,
+    ):Promise<ResponseTypes.GetUserResponse> =>{
+        const response = await axios.get<ResponseTypes.GetUserResponse>(`https://garage-backend.onrender.com/users/${userId}`)
+        return response.data;
+    }

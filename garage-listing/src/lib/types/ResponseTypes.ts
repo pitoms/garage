@@ -41,3 +41,9 @@ export interface User {
     id?: string
     email?: string
   }
+
+export interface GetUserResponse{
+        addressState?: string,
+        displayName?: string,
+        id?: string
+}
