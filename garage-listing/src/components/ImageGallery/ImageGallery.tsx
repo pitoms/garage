@@ -13,7 +13,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({ imageSources }) => {
   const smallImages = imageSources.slice(1, 5);
 
   return (
-    <div className="flex flex-nowrap max-h-[280px] md:max-h-[800px] max-w-[1440px] mx-auto">
+    <div className="flex flex-nowrap  md:max-h-[800px] max-w-[1440px] mx-auto">
       {/* Large Image */}
       <div className="w-full md:w-1/2">
         <div className="w-full  aspect-square">

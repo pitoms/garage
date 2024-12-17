@@ -1,15 +1,22 @@
 import { useEffect, useState } from "react";
-import { getListingData, getUser } from "../lib/DataSource/DataSource";
+import {
+  getListingData,
+  getRelatedListings,
+  getUser,
+} from "../lib/DataSource/DataSource";
 import { useParams } from "react-router-dom";
 import * as ResponseTypes from "../lib/types/ResponseTypes";
 import { ImageGallery } from "../components/ImageGallery/ImageGallery";
 import { ProductDetailsSection } from "../components/ProductDetailsSection/ProductDetailsSection";
 import { ProductBiddingSection } from "../components/ProductBiddingSection/ProductBiddingSection";
+import { ProductRelatedSection } from "../components/ProductRelatedSection/ProductRelatedSection";
 
 export const Listing: React.FC = () => {
   const { listingId } = useParams();
   const [listing, setListing] = useState<ResponseTypes.GetListingResponse>();
   const [userInfo, setUserInfo] = useState<ResponseTypes.GetUserResponse>();
+  const [relatedListings, setRelatedListings] =
+    useState<ResponseTypes.GetListingResponse[]>();
 
   useEffect(() => {
     const fetchListing = async () => {
@@ -30,6 +37,16 @@ export const Listing: React.FC = () => {
     };
     fetchUserInfo();
   }, [listing?.userId]);
+
+  useEffect(() => {
+    const fetchRelatedListings = async () => {
+      if (listingId) {
+        const data = await getRelatedListings(listingId);
+        setRelatedListings(data.result.relatedListings);
+      }
+    };
+    fetchRelatedListings();
+  }, [listingId]);
 
   return (
     <>
@@ -63,6 +80,9 @@ export const Listing: React.FC = () => {
             }}
           />
         </div>
+      </div>
+      <div className="flex-col mt-4 px-2 max-w-[1440px] mx-auto">
+        <ProductRelatedSection relatedListings={relatedListings} />
       </div>
     </>
   );
