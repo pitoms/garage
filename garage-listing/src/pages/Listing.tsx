@@ -10,8 +10,7 @@ import { ImageGallery } from "../components/ImageGallery/ImageGallery";
 import { ProductDetailsSection } from "../components/ProductDetailsSection/ProductDetailsSection";
 import { ProductBiddingSection } from "../components/ProductBiddingSection/ProductBiddingSection";
 import { ProductRelatedSection } from "../components/ProductRelatedSection/ProductRelatedSection";
-import loadingImage from "../assets/truck.webp"; // Example loading image
-
+import loadingImage from "../assets/truck.webp";
 export const Listing: React.FC = () => {
   const { listingId } = useParams();
   const [isLoading, setIsLoading] = useState<boolean>(true);

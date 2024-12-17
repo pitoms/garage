@@ -10,8 +10,8 @@ export default withMT({
       },
       keyframes: {
         glow: {
-          "0%, 80%": { opacity: "1" }, // Fully visible
-          "50%": { opacity: "0" }, // Fully transparent
+          "0%, 80%": { opacity: "1" },
+          "50%": { opacity: "0" },
         },
       },
       animation: {

@@ -11,16 +11,19 @@ export const ProductRelatedSection: React.FC<ProductRelatedSectionProps> = ({
     <>
       <h2 className="text-xl font-700 my-4">Similar</h2>
       {relatedListings && (
-        <div className="h-64 gap-2 flex flex-row">
+        <div className="gap-2 flex flex-row xs:overflow-x-scroll s: overflow-auto">
           {relatedListings.map(
             (relatedListing) =>
               relatedListing.imageUrls &&
               relatedListing.imageUrls[0] && (
-                <img
-                  className="w-full h-full object-cover aspect-square"
-                  src={relatedListing.imageUrls[0]}
-                  alt="Related Listing"
-                />
+                <a href={`/listing/${relatedListing.id}`}>
+                  <img
+                    className="h-64 object-cover aspect-square"
+                    src={relatedListing.imageUrls[0]}
+                    alt="Related Listing"
+                  />
+                  <span>{relatedListing.listingTitle}</span>
+                </a>
               )
           )}
         </div>
