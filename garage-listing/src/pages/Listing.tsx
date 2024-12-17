@@ -79,15 +79,17 @@ export const Listing: React.FC = () => {
             sellerName={userInfo?.displayName}
           />
         </div>
-        <div className="w-full mt-4 md:mt-0 md:w-1/2">
-          <ProductBiddingSection
-            currentPrice={listing?.sellingPrice}
-            buyerPremiumPrice={listing?.sellingPrice}
-            onQuickBid={() => {
-              // Implement quick bid functionality here
-            }}
-          />
-        </div>
+        {listing?.sellingPrice && (
+          <div className="w-full mt-4 md:mt-0 md:w-1/2">
+            <ProductBiddingSection
+              currentPrice={listing?.sellingPrice}
+              buyerPremiumPrice={listing?.sellingPrice * 1.1}
+              onQuickBid={() => {
+                // Implement quick bid functionality here
+              }}
+            />
+          </div>
+        )}
       </div>
 
       {/* Related Listings */}

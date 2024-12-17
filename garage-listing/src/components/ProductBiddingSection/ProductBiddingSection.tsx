@@ -1,3 +1,5 @@
+import { formatToDollar } from "../../lib/utils/utils";
+
 interface ProductBiddingSectionProps {
   loggedIn?: boolean;
   currentPrice?: number;
@@ -13,10 +15,12 @@ export const ProductBiddingSection: React.FC<ProductBiddingSectionProps> = ({
   return (
     <div className="w-full flex flex-col">
       <span className="justify-between text-xl">Current Bid: </span>
-      <span className="font-bold text-xl mt-2">${currentPrice}</span>
+      <span className="font-bold text-xl mt-2">
+        {currentPrice && formatToDollar(currentPrice)}
+      </span>
       {buyerPremiumPrice && (
         <span className="text-sm">
-          w/ Buyer's Premium: ${buyerPremiumPrice * 1.1}
+          w/ Buyer's Premium: {formatToDollar(buyerPremiumPrice)}
         </span>
       )}
       <div className="w-full flex flex-col">
